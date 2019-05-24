@@ -16,6 +16,19 @@ export default [
       { type: "CLIENT_FIELD", required: true, columnSpan: 6 },
       { type: "PROJECT_FIELD", required: true, columnSpan: 6 },
       { type: "SERVICE_ID_FIELD", required: true, columnSpan: 6 },
+      { type: "INITIALS", required: true, columnSpan: 6 },
+      { type: "VERSION_NUMBER_FIELD", required: true, columnSpan: 6 }
+      // { type: "DATE", required: true, columnSpan: 6 }
+    ]
+  },
+  {
+    id: "review_export",
+    label: "Review Export",
+    fields: [
+      { type: "JOB_ID_FIELD", required: true },
+      { type: "CLIENT_FIELD", required: true, columnSpan: 6 },
+      { type: "PROJECT_FIELD", required: true, columnSpan: 6 },
+      { type: "SERVICE_ID_FIELD", required: true, columnSpan: 6 },
       { type: "INITIALS", required: true, columnSpan: 6 }
       // { type: "DATE", required: true, columnSpan: 6 }
     ]

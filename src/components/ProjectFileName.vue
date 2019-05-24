@@ -22,7 +22,7 @@
 
             <!-- Service ID Field -->
             <!-- https://getbootstrap.com/docs/4.3/components/input-group/ -->
-            <div class="input-group mb-3" v-if="field.type === 'SERVICE_ID_FIELD'">
+            <div class="input-group mb-2" v-if="field.type === 'SERVICE_ID_FIELD'">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">IH-</span>
               </div>
@@ -33,6 +33,26 @@
                 <option>F</option>
                 <option>P</option>
                 <option>V</option>
+              </select>
+            </div>
+
+            <!-- Version Number Field -->
+            <!-- https://getbootstrap.com/docs/4.3/components/input-group/ -->
+            <div class="input-group mb-3" v-if="field.type === 'VERSION_NUMBER_FIELD'">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">V</span>
+              </div>
+              <select class="form-control" v-model="project.version_number">
+                <option>01</option>
+                <option>02</option>
+                <option>03</option>
+                <option>04</option>
+                <option>05</option>
+                <option>06</option>
+                <option>07</option>
+                <option>08</option>
+                <option>09</option>
+                <option>10</option>
               </select>
             </div>
 
@@ -74,6 +94,7 @@
 <script>
 import allTypes from "./types";
 import allFields from "./fields";
+import { version } from "punycode";
 
 export default {
   data() {
@@ -86,7 +107,8 @@ export default {
         client: "Client Name",
         project: "Project Name",
         service_id: "A",
-        initials: "SLG"
+        initials: "SLG",
+        version_number: "01"
       }
     };
   },
@@ -133,6 +155,7 @@ export default {
       let service_id = this.project.service_id;
       let initials = this.project.initials;
       let date = new Date();
+      let version_number = this.project.version_number;
 
       // Removes non-alphabetic characters, chains of whitespace characters
       client = this.removeAllWhitespace(this.sanitizeText(client));
@@ -142,6 +165,7 @@ export default {
         this.sanitizeText(initials)
       ).toUpperCase();
       date = this.formatDate(date);
+      version_number = this.removeAllWhitespace(version_number);
 
       // Assembles filename
       return (
@@ -156,7 +180,9 @@ export default {
         "_" +
         initials +
         "_" +
-        date
+        date +
+        "_" +
+        version_number
       );
     }
   }

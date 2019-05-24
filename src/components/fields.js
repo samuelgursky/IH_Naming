@@ -23,6 +23,12 @@ export default {
     help: "defines class of service",
     type: "text"
   },
+  VERSION_NUMBER_FIELD: {
+    label: "Version Number",
+    identifier: "version_number",
+    help: "version number",
+    type: "text"
+  },
   INITIALS: {
     label: "Initials",
     identifier: "initials",
