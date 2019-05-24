@@ -22,14 +22,18 @@ export default [
     ]
   },
   {
-    id: "review_export",
+    id: "review_export_name",
     label: "Review Export",
     fields: [
       { type: "JOB_ID_FIELD", required: true },
       { type: "CLIENT_FIELD", required: true, columnSpan: 6 },
       { type: "PROJECT_FIELD", required: true, columnSpan: 6 },
       { type: "SERVICE_ID_FIELD", required: true, columnSpan: 6 },
-      { type: "INITIALS", required: true, columnSpan: 6 }
+      { type: "INITIALS", required: true, columnSpan: 6 },
+      { type: "VERSION_NUMBER_FIELD", required: true, columnSpan: 6 },
+      { type: "RESOLUTION", required: false, columnSpan: 6 },
+      { type: "CODEC", required: false, columnSpan: 6 },
+      { type: "AUDIO_ROUTING", required: false, columnSpan: 6 }
       // { type: "DATE", required: true, columnSpan: 6 }
     ]
   }

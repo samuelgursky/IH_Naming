@@ -27,7 +27,7 @@ export default {
     label: "Version Number",
     identifier: "version_number",
     help: "version number",
-    type: "text"
+    type: "number"
   },
   INITIALS: {
     label: "Initials",
@@ -45,6 +45,24 @@ export default {
     label: "Document Type",
     identifier: "document_type",
     help: "type of document",
+    type: "text"
+  },
+  RESOLUTION: {
+    label: "Resolution",
+    identifier: "resolution",
+    help: "resolution",
+    type: "text"
+  },
+  CODEC: {
+    label: "Codec",
+    identifier: "codec",
+    help: "codec",
+    type: "text"
+  },
+  AUDIO_ROUTING: {
+    label: "Audio Routing",
+    identifier: "audio_routing",
+    help: "audio routing",
     type: "text"
   }
 };
