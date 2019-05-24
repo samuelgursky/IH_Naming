@@ -34,5 +34,11 @@ export default {
     identifier: "date",
     help: "current text",
     type: "date"
+  },
+  DOCUMENT_TYPE: {
+    label: "Document Type",
+    identifier: "document_type",
+    help: "type of document",
+    type: "text"
   }
 };
