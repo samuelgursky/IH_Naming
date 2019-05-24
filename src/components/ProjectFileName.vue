@@ -59,9 +59,7 @@
             <!-- resolution Field -->
             <!-- https://getbootstrap.com/docs/4.3/components/input-group/ -->
             <div class="input-group mb-3" v-if="field.type === 'RESOLUTION'">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon3">V</span>
-              </div>
+              <div class="input-group-prepend"></div>
               <select class="form-control" v-model="project.resolution">
                 <option>1920x1080</option>
                 <option>1080x1920</option>
@@ -72,9 +70,7 @@
             <!-- resolution Field -->
             <!-- https://getbootstrap.com/docs/4.3/components/input-group/ -->
             <div class="input-group mb-3" v-if="field.type === 'CODEC'">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon3">V</span>
-              </div>
+              <div class="input-group-prepend"></div>
               <select class="form-control" v-model="project.codec">
                 <option>ProRes 4444 XQ</option>
                 <option>ProRes 4444</option>
@@ -89,9 +85,7 @@
             <!-- audio routing Field -->
             <!-- https://getbootstrap.com/docs/4.3/components/input-group/ -->
             <div class="input-group mb-3" v-if="field.type === 'AUDIO_ROUTING'">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon3">V</span>
-              </div>
+              <div class="input-group-prepend"></div>
               <select class="form-control" v-model="project.audio_routing">
                 <option>5.1</option>
                 <option>2.0</option>
@@ -131,6 +125,7 @@
       class="bg-dark text-light p-2 rounded"
       v-else-if="selectedType.id === 'review_export_name'"
     >{{ReviewExportName}}</pre>
+    <pre class="bg-dark text-light p-2 rounded" v-else-if="selectedType.id === 'final_export_name'">{{FinalExportName}}</pre>
 
     <!-- <small>Debugging</small> -->
     <!-- <pre>{{project}}</pre> -->
@@ -283,6 +278,56 @@ export default {
         "-" +
         audio_routing
       );
+    },
+    FinalExportName() {
+      // Variables for each access
+      let jobId = this.project.job_id;
+      let client = this.project.client;
+      let project = this.project.project;
+      let service_id = this.project.service_id;
+      let initials = this.project.initials;
+      let date = new Date();
+      let version_number = this.project.version_number;
+      let resolution = this.project.resolution;
+      let codec = this.project.codec;
+      let audio_routing = this.project.audio_routing;
+
+      // Removes non-alphabetic characters, chains of whitespace characters
+      client = this.removeAllWhitespace(this.sanitizeText(client));
+      project = this.removeAllWhitespace(this.sanitizeText(project));
+      service_id = this.removeAllWhitespace(this.sanitizeText(service_id));
+      initials = this.removeAllWhitespace(
+        this.sanitizeText(initials)
+      ).toUpperCase();
+      date = this.formatDate(date);
+      version_number = this.removeAllWhitespace(version_number);
+      resolution = this.removeAllWhitespace(resolution);
+      codec = this.removeAllWhitespace(codec);
+      audio_routing = this.removeAllWhitespace(audio_routing);
+
+      // Assembles filename
+      return (
+        jobId +
+        "_" +
+        client +
+        "_" +
+        project +
+        "_" +
+        "IH-" +
+        service_id +
+        "_" +
+        initials +
+        "_" +
+        date +
+        "_" +
+        version_number +
+        "-" +
+        resolution +
+        "-" +
+        codec +
+        "-" +
+        audio_routing
+      );
     }
   }
 };
@@ -291,4 +336,3 @@ export default {
 }
 };
 </script>
-
