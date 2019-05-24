@@ -82,11 +82,11 @@ export default {
       types: allTypes,
       allFields: allFields,
       project: {
-        job_id: 666666,
-        client: "Intello Inc.",
-        project: "Intstgram Ad",
+        job_id: "190000",
+        client: "Client Name",
+        project: "Project Name",
         service_id: "A",
-        initials: "AS"
+        initials: "SLG"
       }
     };
   },
