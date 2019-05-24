@@ -126,7 +126,10 @@
       v-else-if="selectedType.id === 'review_export_name'"
     >{{ReviewExportName}}</pre>
     <pre class="bg-dark text-light p-2 rounded" v-else-if="selectedType.id === 'final_export_name'">{{FinalExportName}}</pre>
-
+    <pre
+      class="bg-dark text-light p-2 rounded"
+      v-else-if="selectedType.id === 'administrative_document'"
+    >{{AdministrativeDocument}}</pre>
     <!-- <small>Debugging</small> -->
     <!-- <pre>{{project}}</pre> -->
   </div>
@@ -147,6 +150,7 @@ export default {
         job_id: "190000",
         client: "Client Name",
         project: "Project Name",
+        document_type: "",
         service_id: "A",
         initials: "SLG",
         version_number: "01",
@@ -327,6 +331,46 @@ export default {
         codec +
         "-" +
         audio_routing
+      );
+    },
+    AdministrativeDocument() {
+      // Variables for each access
+      let jobId = this.project.job_id;
+      let client = this.project.client;
+      let project = this.project.project;
+      let document_type = this.project.document_type;
+      let service_id = this.project.service_id;
+      let date = new Date();
+      let version_number = this.project.version_number;
+
+      // Removes non-alphabetic characters, chains of whitespace characters
+      client = this.removeAllWhitespace(this.sanitizeText(client));
+      project = this.removeAllWhitespace(this.sanitizeText(project));
+      document_type = this.removeAllWhitespace(
+        this.sanitizeText(document_type)
+      );
+      service_id = this.removeAllWhitespace(this.sanitizeText(service_id));
+      date = this.formatDate(date);
+      version_number = this.removeAllWhitespace(version_number);
+
+      // Assembles filename
+      return (
+        jobId +
+        "_" +
+        client +
+        "_" +
+        project +
+        "_" +
+        document_type +
+        "_" +
+        "IH-" +
+        service_id +
+        "_" +
+        initials +
+        "_" +
+        date +
+        "_" +
+        version_number
       );
     }
   }
