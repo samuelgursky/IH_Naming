@@ -63,7 +63,7 @@
 
     <br>
     <small class="text-muted">{{selectedType.label}}:</small>
-    <pre class="bg-dark text-light" v-if="selectedType.id === 'project_folder_name'">{{folderName}}</pre>
+    <pre class="bg-dark text-light p-2 rounded" v-if="selectedType.id === 'project_folder_name'">{{folderName}}</pre>
     <pre class="bg-dark text-light p-2 rounded" v-else-if="selectedType.id === 'project_file_name'">{{fileName}}</pre>
 
     <!-- <small>Debugging</small> -->
