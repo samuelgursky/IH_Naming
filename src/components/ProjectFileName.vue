@@ -29,10 +29,10 @@
               <select class="form-control" v-model="project.service_id">
                 <option>A</option>
                 <option>C</option>
-                <option>ET</option>
                 <option>E</option>
-                <option>Z</option>
                 <option>F</option>
+                <option>P</option>
+                <option>V</option>
               </select>
             </div>
 
